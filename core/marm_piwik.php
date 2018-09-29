@@ -226,7 +226,7 @@ class marm_piwik {
 					$replacement=array();
 					$replacement[0]='\"';
 					$replacement[1]='\"';
-                    $aFormed[] = '"'.preg_replace($pattern, $replacement, $mPushParam).'"';
+                    $aFormed[] = json_encode(preg_replace($pattern, $replacement, $mPushParam));
 				
                 }
                 elseif(is_bool($mPushParam)) {
@@ -239,7 +239,7 @@ class marm_piwik {
                     $aFormed[] = $mPushParam['value'];
                 }
                 else {
-                    $aFormed[] = $mPushParam;
+                    $aFormed[] = json_encode($mPushParam);
                 }
             }
             $sReturn .="\n_paq.push([".implode(', ', $aFormed)."]);";
