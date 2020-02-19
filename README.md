@@ -10,9 +10,9 @@ Integrates the Piwik tracking code into OXID eShop
   `modules/marm/piwik/`
 
 - add in composer.json autoload -> psr4 section
-  "Marm\\Piwik\\": "./source/modules/marm/piwik"
+  `"Marm\\Piwik\\": "./source/modules/marm/piwik"`
 
-- in console: composer dump-autoload -o
+- in console: `composer dump-autoload -o`
 
 - Enable module under Extension > Module > marmalade.de Piwik
 
