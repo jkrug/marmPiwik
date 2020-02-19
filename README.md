@@ -1,32 +1,28 @@
-marmalade :: Piwik
-==================
+# marmalade :: Piwik
+
 Integrates the Piwik tracking code into OXID eShop
 
-Installation / Config
----------------------
+## Installation / Config
 
-*    backup shop and database
+- backup shop and database
 
-*    copy the files from the repository to your shop in the directory
-     `modules/marm/piwik/`
+- copy the files from the repository to your shop in the directory
+  `modules/marm/piwik/`
 
-*    Create the empty file `vendormetadata.php` in the directory above
-     `modules/marm/`
+- add in composer.json autoload -> psr4 section
+  "Marm\\Piwik\\": "./source/modules/marm/piwik"
 
-*    Enable module under Extension > Module > marmalade.de Piwik
+- in console: composer dump-autoload -o
 
-*    Set up your PIWIK variables in Master Settings > Core Settings > Piwik setup
+- Enable module under Extension > Module > marmalade.de Piwik
 
-	 Piwik URL should be without piwik.php ending. like "www.example.org/piwik/"
+- Set up your PIWIK variables in Master Settings > Core Settings > Piwik setup
 
-*    Clean your language cache (cleanup eShop tmp directory)
-
+- Clean your language cache (cleanup eShop tmp directory)
 
 If you don't see Master Settings > Core Settings > Piwik setup tab, logout and login again to admin section.
 
-
-Change Log
-----------
+## Change Log
 
 1. Added "Help Icons" Submitted By Marcus Pleintinger on 18.10.2012
 
@@ -36,3 +32,7 @@ Change Log
 
 4. Exclude trackingcode from mails
 
+5. Oxid v6.1.5 compatile by BPMusic on 2020-02-19
+   - Option for scriptfilename
+   - Option for heartbeattimer
+   - Option for requestmethod

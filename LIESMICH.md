@@ -14,7 +14,7 @@ Integriert den Piwik-Trackingcode in OXID eShop
 - in composer.json autoload -> psr4 section hinzufügen
   "Marm\\Piwik\\": "./source/modules/marm/piwik"
 
-- in der console composer dump-autoload -o
+- in der console: composer dump-autoload -o
 
 - aktivieren Sie das Modul im Backend
 
@@ -34,7 +34,7 @@ Wenn 'Stammdaten > Grundeinstellungen > Piwik' nicht sichtbar ist, aus Admin-Ber
 
 4. Exclude trackingcode from mails
 
-5. Oxid v6.1.5 compatible by BPMusic on 2020-02-19
+5. Oxid v6.1.5 kompatibel by BPMusic on 2020-02-19
    - Optionen für Scriptdateiname
    - Optionen für Heartbeattimer
    - Optionen für Request Methode
