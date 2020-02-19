@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Piwik integration in OXID
  *
@@ -31,15 +32,16 @@ $sLangName  = "Deutsch";
 // RESOURCE IDENTITFIER = STRING
 // -------------------------------
 $aLang = array(
-	'charset'                                  			=> 'ISO-8859-15',
-	'HELP_MARM_PIWIK_CONFIG_piwik_site_id'				=> 'Die Seiten ID aus Piwik. Zu finden im Piwik Backend unter "Einstellungen" -> "Webseiten": ID bei der zu trackenden Seite.',
-	'HELP_MARM_PIWIK_CONFIG_piwik_url'					=> 'Die Url zur Piwik-Installation. z.B.: "http://piwik.shopdomain.de/" oder "http://shopdomain.de/piwik/"',
+	'charset'                                  			=> 'UTF-8',
+	'HELP_MARM_PIWIK_CONFIG_piwik_site_id'				=> 'Die Seiten ID aus Matomo. Zu finden im Matomo Backend unter "Einstellungen" -> "Webseiten": ID bei der zu trackenden Seite.',
+	'HELP_MARM_PIWIK_CONFIG_piwik_url'					=> 'Die Url zur Matomo-Installation. z.B.: "http://piwik.shopdomain.de/" oder "http://shopdomain.de/piwik/"',
+	'HELP_MARM_PIWIK_CONFIG_piwik_script_name'			=> 'Der Dateiname ohne Endung der Matomo Scripte. Normalerweise matomo.js/matomo.php oder piwik.php/piwik.js. Kann angepasst werden um AdBlocker teilweise zu umgehen.',
 	'HELP_MARM_PIWIK_CONFIG_tracking_method'			=> 'PHP available in pro version only',
-	'HELP_MARM_PIWIK_CONFIG_searched_for_var_name'		=> 'Mit diesem Namen werden erfolgreiche Suchanfragen in Piwik getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen".',
-	'HELP_MARM_PIWIK_CONFIG_no_search_results_var_name'	=> 'Mit diesem Namen werden Suchanfragen die kein Ergebnis zurückliefern in Piwik getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen".',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_name'		=> 'Unter diesem Überbegriff sind alle Aktionen die den Newsletter betreffen in Piwik getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen".',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_subscribed'	=> 'Mit diesem Namen wird der 1. Schritt zu Anmeldung also der Versand der Opt-In Email getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Piwik für Newsletter trackt"].',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_activated'	=> 'Mit diesem Namen wird die Aktivierung also das anklicken des Links in der Email getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Piwik für Newsletter trackt"].',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_unsubscribed'=> 'Mit diesem Namen wird die Abmeldung also das anklicken des Links in der Email getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Piwik für Newsletter trackt"].',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_form_showed'	=> 'Mit diesem Namen wird das Betrachten einer Email zur Anmeldung getrackt. Zu finden im Piwik Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Piwik für Newsletter trackt"].<br>Funktioniert nur wenn die Einstellung "externe Bilder nicht anzeigen" oder ähnliches im Email Programm des Kunden nicht aktiviert ist.',
+	'HELP_MARM_PIWIK_CONFIG_searched_for_var_name'		=> 'Mit diesem Namen werden erfolgreiche Suchanfragen in Matomo getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen".',
+	'HELP_MARM_PIWIK_CONFIG_no_search_results_var_name'	=> 'Mit diesem Namen werden Suchanfragen die kein Ergebnis zurÃ¼ckliefern in Matomo getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen".',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_name'		=> 'Unter diesem Ãœberbegriff sind alle Aktionen die den Newsletter betreffen in Matomo getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen".',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_subscribed'	=> 'Mit diesem Namen wird der 1. Schritt zu Anmeldung also der Versand der Opt-In Email getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Matomo fÃ¼r Newsletter trackt"].',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_activated'	=> 'Mit diesem Namen wird die Aktivierung also das anklicken des Links in der Email getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Matomo fÃ¼r Newsletter trackt"].',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_unsubscribed' => 'Mit diesem Namen wird die Abmeldung also das anklicken des Links in der Email getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Matomo fÃ¼r Newsletter trackt"].',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_form_showed'	=> 'Mit diesem Namen wird das Betrachten einer Email zur Anmeldung getrackt. Zu finden im Matomo Backend unter "Besucher" -> "Benutzerdefinierte Variablen" -> [Wert bei "Variable, die Matomo fÃ¼r Newsletter trackt"].<br>Funktioniert nur wenn die Einstellung "externe Bilder nicht anzeigen" oder Ã¤hnliches im Email Programm des Kunden nicht aktiviert ist.',
 );

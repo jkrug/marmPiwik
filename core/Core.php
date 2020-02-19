@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Piwik integration in OXID
  *
@@ -24,58 +25,74 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
- 
-class marm_piwik {
 
-    const VERSION = '0.6';
+namespace Marm\Piwik\Core;
 
-    const CONFIG_ENTRY_NAME = 'marm_piwik_config';
+class Core
+{
+
+    const VERSION = '0.7.1';
+
+    const CONFIG_ENTRY_NAME = 'MarmPiwikConfig';
 
     protected $_aConfig = array(
         'piwik_site_id' => array(
-            'value'=> '99999',
+            'value' => '99999',
+            'input_type' => 'text'
+        ),
+        'piwik_script_name' => array(
+            'value' => 'matomo',
             'input_type' => 'text'
         ),
         'piwik_url' => array(
-            'value'=> 'http://yourshopurl.com/piwik/',
+            'value' => 'http://yourshopurl.com/piwik/',
             'input_type' => 'text'
+        ),
+        'tracking_request' => array(
+            'value' => 'POST',
+            'input_type' => 'select',
+            'options' => array('POST', 'GET')
         ),
         'tracking_method' => array(
             'value' => 'javascript',
             'input_type' => 'select',
-            'options' => array( 'javascript', 'php' )
+            'options' => array('javascript',/* 'php'*/)
+        ),
+        'piwik_heartbeat' => array(
+            'value' => '0',
+            'input_type' => 'text',
         ),
         'newsletter_goal_id' => array(
-            'value'=> '',
-            'input_type' =>'text'
+            'value' => '',
+            'input_type' => 'text'
         ),
         'newsletter_var_name' => array(
-            'value'=> 'Newsletter',
-            'input_type' =>'text'
+            'value' => 'Newsletter',
+            'input_type' => 'text'
         ),
         'newsletter_var_subscribed' => array(
-            'value'=> 'bestellt',
-            'input_type' =>'text'
+            'value' => 'bestellt',
+            'input_type' => 'text'
         ),
         'newsletter_var_activated' => array(
-            'value'=> 'aktiviert',
-            'input_type' =>'text'
+            'value' => 'aktiviert',
+            'input_type' => 'text'
         ),
         'newsletter_var_unsubscribed' => array(
-            'value'=> 'abbestellt',
-            'input_type' =>'text'
+            'value' => 'abbestellt',
+            'input_type' => 'text'
         ),
         'newsletter_var_form_showed' => array(
-            'value'=> 'Bestellseite angeschaut',
-            'input_type' =>'text'
+            'value' => 'Bestellseite angeschaut',
+            'input_type' => 'text'
         ),
         'searched_for_var_name' => array(
-            'value'=> 'Suchparameter',
-            'input_type' =>'text'
+            'value' => 'Suchparameter',
+            'input_type' => 'text'
         ),
         'no_search_results_var_name' => array(
-            'value'=> 'fehlgeschlagene Suche nach',
-            'input_type' =>'text'
+            'value' => 'fehlgeschlagene Suche nach',
+            'input_type' => 'text'
         )
     );
     protected $_aPushParams = array();
@@ -96,19 +113,17 @@ class marm_piwik {
 
     protected function _loadConfig()
     {
-        $aSavedConfig = oxConfig::getInstance()->getShopConfVar(self::CONFIG_ENTRY_NAME);
+        $aSavedConfig = \OxidEsales\Eshop\Core\Registry::getConfig()->getShopConfVar(self::CONFIG_ENTRY_NAME);
         if ($aSavedConfig && count($aSavedConfig) == count($this->_aConfig)) {
             $this->_aConfig = $aSavedConfig;
-        }
-        else {
+        } else {
             $this->_saveConfig();
         }
-
     }
 
     protected function _saveConfig()
     {
-        oxConfig::getInstance()->saveShopConfVar( 'arr', self::CONFIG_ENTRY_NAME, $this->_aConfig );
+        \OxidEsales\Eshop\Core\Registry::getConfig()->saveShopConfVar('arr', self::CONFIG_ENTRY_NAME, $this->_aConfig);
     }
 
     public function getConfig()
@@ -131,7 +146,8 @@ class marm_piwik {
         return $blChanged;
     }
 
-    public function getConfigValue($sValue) {
+    public function getConfigValue($sValue)
+    {
         if (isset($this->_aConfig[$sValue]) && isset($this->_aConfig[$sValue]['value'])) {
             return $this->_aConfig[$sValue]['value'];
         }
@@ -147,6 +163,33 @@ class marm_piwik {
     }
 
     /**
+     * returns config parameter for scriptName
+     * @return string
+     */
+    public function getPiwikScriptName()
+    {
+        return (string) $this->getConfigValue('piwik_script_name');
+    }
+
+    /**
+     * returns config parameter for heartbeat
+     * @return int
+     */
+    public function getPiwikHeartbeat()
+    {
+        return (int) $this->getConfigValue('piwik_heartbeat');
+    }
+
+    /**
+     * returns config parameter for request
+     * @return string
+     */
+    public function getTrackingRequest()
+    {
+        return (string) $this->getConfigValue('tracking_request');
+    }
+
+    /**
      * returns config parameter for PIWIK URL
      * @return string
      */
@@ -155,7 +198,7 @@ class marm_piwik {
         $sUrl = $this->getConfigValue('piwik_url');
         if (!$blFull) {
             $sUrl = str_replace(
-                array (
+                array(
                     'http://',
                     'https://'
                 ),
@@ -163,7 +206,7 @@ class marm_piwik {
                 $sUrl
             );
             $sUrl = str_replace(
-                array (
+                array(
                     '/proxy.php',
                     '/proxy-piwik.php',
                     '/piwik.php'
@@ -171,7 +214,7 @@ class marm_piwik {
                 '/',
                 $sUrl
             );
-         }
+        }
         return $sUrl;
     }
 
@@ -190,7 +233,7 @@ class marm_piwik {
      */
     protected function _getViewOrder()
     {
-        return oxConfig::getInstance()->getActiveView();
+        return \OxidEsales\Eshop\Core\Registry::getConfig()->getActiveView();
     }
 
     /**
@@ -218,31 +261,26 @@ class marm_piwik {
         $sReturn = '';
         foreach ($this->_aPushParams as $aPushArray) {
             $aFormed = array();
-            foreach($aPushArray as $mPushParam) {
+            foreach ($aPushArray as $mPushParam) {
                 if (is_string($mPushParam)) {
-					$pattern=array();
-					$pattern[0]='#(?<!\\\\)"#';
-					$pattern[1]='#&quot;#';
-					$replacement=array();
-					$replacement[0]='\"';
-					$replacement[1]='\"';
+                    $pattern = array();
+                    $pattern[0] = '#(?<!\\\\)"#';
+                    $pattern[1] = '#&quot;#';
+                    $replacement = array();
+                    $replacement[0] = '\"';
+                    $replacement[1] = '\"';
                     $aFormed[] = json_encode(preg_replace($pattern, $replacement, $mPushParam));
-				
-                }
-                elseif(is_bool($mPushParam)) {
-                    $aFormed[] = $mPushParam?'true':'false';
-                }
-                elseif(is_double($mPushParam) || is_float($mPushParam)) {
+                } elseif (is_bool($mPushParam)) {
+                    $aFormed[] = $mPushParam ? 'true' : 'false';
+                } elseif (is_double($mPushParam) || is_float($mPushParam)) {
                     $aFormed[] = sprintf("%.2f", $mPushParam);
-                }
-                elseif(is_array($mPushParam) && isset($mPushParam['type']) && $mPushParam['type'] == 'raw') {
+                } elseif (is_array($mPushParam) && isset($mPushParam['type']) && $mPushParam['type'] == 'raw') {
                     $aFormed[] = $mPushParam['value'];
-                }
-                else {
+                } else {
                     $aFormed[] = json_encode($mPushParam);
                 }
             }
-            $sReturn .="\n_paq.push([".implode(', ', $aFormed)."]);";
+            $sReturn .= "\n_paq.push([" . implode(', ', $aFormed) . "]);";
         }
         return $sReturn;
     }
@@ -255,7 +293,7 @@ class marm_piwik {
     {
         // seems like deprecated but needed for downwards compatibility
         // better use $oViewObject->getArticleCount() at a later time
-        if($oViewObject->getPageNavigation()->NrOfPages > 0) {
+        if ($oViewObject->getPageNavigation()->NrOfPages > 0) {
             $this->addPushParams(
                 'setCustomVariable',
                 1,
@@ -263,8 +301,7 @@ class marm_piwik {
                 $oViewObject->getSearchParamForHtml(),
                 'page'
             );
-        }
-        else{
+        } else {
             $this->addPushParams(
                 'setCustomVariable',
                 2,
@@ -300,8 +337,8 @@ class marm_piwik {
                     'page'
                 );
                 $iNewsLetterGoalId = $this->getPiwikNewsletterGoalId();
-                if ( $iNewsLetterGoalId ) {
-                    $this->addPushParams('trackGoal',$iNewsLetterGoalId);
+                if ($iNewsLetterGoalId) {
+                    $this->addPushParams('trackGoal', $iNewsLetterGoalId);
                 }
                 break;
             case 3:
@@ -325,7 +362,6 @@ class marm_piwik {
                 );
                 break;
         }
-
     }
 
 
@@ -340,7 +376,7 @@ class marm_piwik {
          * may NOT have getBasket method (for example Details)
          * @var oxBasket $oBasket
          */
-        $oBasket = oxSession::getInstance()->getBasket();
+        $oBasket = \OxidEsales\Eshop\Core\Session::instance()->getBasket();
         $this->_setEcommerceItemsByBasket($oBasket);
         $this->addPushParams('trackEcommerceCartUpdate', $oBasket->getPrice()->getBruttoPrice());
     }
@@ -351,15 +387,14 @@ class marm_piwik {
      */
     protected function _setEcommerceItemsByBasket($oBasket)
     {
-        foreach ($oBasket->getContents() as $oBasketItem)
-        {
+        foreach ($oBasket->getContents() as $oBasketItem) {
             $oArticle = $oBasketItem->getArticle();
             $this->addPushParams(
                 'addEcommerceItem',
                 $oArticle->oxarticles__oxartnum->value,
                 $oArticle->oxarticles__oxtitle->value,
                 $oArticle->getCategory()->oxcategories__oxtitle->value,
-                number_format($oBasketItem->getUnitPrice()->getBruttoPrice(),2),
+                number_format($oBasketItem->getUnitPrice()->getBruttoPrice(), 2),
                 $oBasketItem->getAmount()
             );
         }
@@ -376,10 +411,9 @@ class marm_piwik {
         $this->_setEcommerceItemsByBasket($oBasket);
         $dTaxAmount = $oOrder->oxorder__oxartvatprice1->value + $oOrder->oxorder__oxartvatprice2->value;
         $dShippingTotal =
-                  $oOrder->getOrderDeliveryPrice()->getBruttoPrice()
-                + $oOrder->getOrderPaymentPrice() ->getBruttoPrice()
-                + $oOrder->getOrderWrappingPrice()->getBruttoPrice()
-        ;
+            $oOrder->getOrderDeliveryPrice()->getBruttoPrice()
+            + $oOrder->getOrderPaymentPrice()->getBruttoPrice()
+            + $oOrder->getOrderWrappingPrice()->getBruttoPrice();
         $this->addPushParams(
             'trackEcommerceOrder',
             $oOrder->oxorder__oxordernr->value,
@@ -428,9 +462,9 @@ class marm_piwik {
     protected function _setPiwikParamsByViewObject()
     {
         $oViewObject = $this->_getViewOrder();
-        $oRefClass = new ReflectionClass($this);
-        $sFuncName = 'setPiwikParamsFor'.ucfirst($oViewObject->getClassName());
-        if($oRefClass->hasMethod($sFuncName)) {
+        $oRefClass = new \ReflectionClass($this);
+        $sFuncName = 'setPiwikParamsFor' . ucfirst($oViewObject->getClassName());
+        if ($oRefClass->hasMethod($sFuncName)) {
             $this->$sFuncName($oViewObject);
         }
         if ($oViewObject->getFncName() == 'tobasket') {
@@ -444,17 +478,30 @@ class marm_piwik {
      */
     public function getMarmPiwikCode()
     {
-        $sMarmPiwikCode = "<!-- Piwik Plugin by marmalade.de, sponsored by WTC Media Productions and Hebsacker Stahlwaren GmbH -->\n";
-        $sMarmPiwikCode .= '<script type="text/javascript">';
-        $sMarmPiwikCode .= '
-var _paq = _paq || [];
-(function(){
-var u=(("https:" == document.location.protocol) ? "https://'.$this->getPiwikUrl(false).'" : "http://'.$this->getPiwikUrl(false).'");
-';
+        // $sMarmPiwikCode = "<!-- Piwik Plugin by marmalade.de, sponsored by WTC Media Productions and Hebsacker Stahlwaren GmbH -->\n";
+        $sMarmPiwikCode = '<script type="text/javascript">';
+        $sMarmPiwikCode .= 'var _paq = _paq || []; (function(){
+            var u="//' . $this->getPiwikUrl(false) . '/";';
 
-//            $this->_aPushParams = array();
-        $this->addPushParams('setSiteId',     $this->getPiwikSiteId());
-        $this->addPushParams('setTrackerUrl', array('type'=>'raw', 'value' => "u+'piwik.php'"));
+        $this->addPushParams(
+            'setSiteId',
+            (string) $this->getPiwikSiteId()
+        );
+        $this->addPushParams(
+            'setTrackerUrl',
+            array(
+                'type' => 'raw',
+                'value' => "u+'" . $this->getPiwikScriptName() . ".php'"
+            )
+        );
+
+        $this->addPushParams(
+            'setRequestMethod',
+            $this->getTrackingRequest() === 'POST' ? 'POST' : 'GET'
+        );
+        if ($this->getPiwikHeartbeat() >= 15) {
+            $this->addPushParams('enableHeartBeatTimer', $this->getPiwikHeartbeat());
+        }
 
         $this->_setPiwikParamsByViewObject();
 
@@ -469,12 +516,12 @@ s=d.getElementsByTagName(\'script\')[0];
 g.type=\'text/javascript\';
 g.defer=true;
 g.async=true;
-g.src=u+\'piwik.js\';
+g.src=u+\'' . $this->getPiwikScriptName() . '.js\';
 s.parentNode.insertBefore(g,s);
 })();';
         $sMarmPiwikCode .= '</script>';
-        $sMarmPiwikCode .= '<noscript><img src="'.$this->getPiwikUrl().'?idsite='.$this->getPiwikSiteId().'&amp;rec=1" style="border:0" alt="" /></noscript>
-<!-- End Piwik -->';
+        $sMarmPiwikCode .= '<noscript><img src="' . $this->getPiwikUrl() . '?idsite=' . $this->getPiwikSiteId() . '&amp;rec=1" style="border:0" alt="" /></noscript>';
+        // <!-- End Piwik -->';
         return $sMarmPiwikCode;
     }
 }

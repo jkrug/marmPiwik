@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Piwik integration in OXID
  *
@@ -31,15 +32,16 @@ $sLangName  = "English";
 // RESOURCE IDENTITFIER = STRING
 // -------------------------------
 $aLang = array(
-	'charset'                                  			=> 'ISO-8859-15',
-	'HELP_MARM_PIWIK_CONFIG_piwik_site_id'				=> 'Site ID from Piwik. Go to piwik backend and navigate to "settings" -> "websites".',
-	'HELP_MARM_PIWIK_CONFIG_piwik_url'					=> 'Url to piwik installation. e.g.: "http://piwik.shopdomain.de/" or "http://shopdomain.de/piwik/"',
-    'HELP_MARM_PIWIK_CONFIG_tracking_method'			=> 'PHP available in pro version only',
-	'HELP_MARM_PIWIK_CONFIG_searched_for_var_name'		=> 'Name for successfull search requests in piwik. Go to piwik backend and navigate to "Visitors" -> "Custom Variables".',
-	'HELP_MARM_PIWIK_CONFIG_no_search_results_var_name'	=> 'Name for unsuccessfull search requests with no items found in piwik. Go to piwik backend and navigate to "Visitors" -> "Custom Variables".',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_name'		=> 'Generic term for all actions related to newsletter in piwik. Go to piwik backend and navigate to "Visitors" -> "Custom Variables".',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_subscribed'	=> 'Name for tracking the 1st step in subscribing a newsletter. Go to piwik backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_activated'	=> 'Name for tracking the activation by clicking the link in the email. Go to piwik backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_unsubscribed'=> 'Name for tracking the unsubscribing by clicking the link in the email. Go to piwik backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].',
-	'HELP_MARM_PIWIK_CONFIG_newsletter_var_form_showed'	=> 'Name for tracking the viewing of the subscribe email. Go to piwik backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].<br>Only works if the option "do not show external pictures" or similar is not set in the email client of the customer.',
+	'charset'                                  			=> 'UTF-8',
+	'HELP_MARM_PIWIK_CONFIG_piwik_site_id'				=> 'Site ID from Matomo. Go to matomo backend and navigate to "settings" -> "websites".',
+	'HELP_MARM_PIWIK_CONFIG_piwik_url'					=> 'Url to matomo installation. e.g.: "http://piwik.shopdomain.de/" or "http://shopdomain.de/piwik/"',
+	'HELP_MARM_PIWIK_CONFIG_piwik_script_name'					=> 'The filename without extension of the Matomo scripts. Usually matomo.js/matomo.php or piwik.php/piwik.js. Can be customized to partially bypass AdBlocker.',
+	'HELP_MARM_PIWIK_CONFIG_tracking_method'			=> 'PHP available in pro version only',
+	'HELP_MARM_PIWIK_CONFIG_searched_for_var_name'		=> 'Name for successfull search requests in matomo. Go to matomo backend and navigate to "Visitors" -> "Custom Variables".',
+	'HELP_MARM_PIWIK_CONFIG_no_search_results_var_name'	=> 'Name for unsuccessfull search requests with no items found in matomo. Go to matomo backend and navigate to "Visitors" -> "Custom Variables".',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_name'		=> 'Generic term for all actions related to newsletter in matomo. Go to matomo backend and navigate to "Visitors" -> "Custom Variables".',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_subscribed'	=> 'Name for tracking the 1st step in subscribing a newsletter. Go to matomo backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_activated'	=> 'Name for tracking the activation by clicking the link in the email. Go to matomo backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_unsubscribed' => 'Name for tracking the unsubscribing by clicking the link in the email. Go to matomo backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].',
+	'HELP_MARM_PIWIK_CONFIG_newsletter_var_form_showed'	=> 'Name for tracking the viewing of the subscribe email. Go to matomo backend and navigate to "Visitors" -> "Custom Variables -> [Value at "Newsletter variable name in Custom variables"].<br>Only works if the option "do not show external pictures" or similar is not set in the email client of the customer.',
 );

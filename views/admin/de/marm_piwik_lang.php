@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Piwik integration in OXID
  *
@@ -31,20 +32,23 @@ $sLangName  = "Deutsch";
 // RESOURCE IDENTITFIER = STRING
 // -------------------------------
 $aLang = array(
-    'charset'                                  		=> 'ISO-8859-15',
-    'tbclmarm_piwik_setup' 							=> 'Piwik',
-    'MARM_PIWIK_CONFIG_piwik_site_id' 				=> 'Piwik Seiten-ID',
-    'MARM_PIWIK_CONFIG_piwik_url' 					=> 'Piwik URL',
-    'MARM_PIWIK_CONFIG_newsletter_goal_id' 			=> 'Newsletter Ziel-ID',
-    'MARM_PIWIK_CONFIG_tracking_method' 			=> 'Bitte wählen Sie ein Trackingmethode (Pro-Version)',
-    'MARM_PIWIK_CONFIG_tracking_method_php' 		=> 'Serverseitig über PHP (Pro-Version)',
-    'MARM_PIWIK_CONFIG_tracking_method_javascript' 	=> 'klassisch über JavaScript',
-    'MARM_PIWIK_CONFIG_newsletter_var_name' 		=> 'Variable, die Piwik für Newsletter trackt',
-    'MARM_PIWIK_CONFIG_newsletter_var_subscribed' 	=> 'Wert der Variablen, wenn sich ein Kunde anmeldet',
-    'MARM_PIWIK_CONFIG_newsletter_var_activated' 	=> 'Wert der Variablen, wenn ein Abbonent die Bestellung bestätigt',
+    'charset'                                          => 'UTF-8',
+    'tbclmarm_piwik_setup'                             => 'Matomo',
+    'MARM_PIWIK_CONFIG_piwik_site_id'                 => 'Matomo Seiten-ID',
+    'MARM_PIWIK_CONFIG_piwik_url'                     => 'Matomo URL',
+    'MARM_PIWIK_CONFIG_piwik_script_name'              => 'Matomo Script name',
+    'MARM_PIWIK_CONFIG_newsletter_goal_id'             => 'Newsletter Ziel-ID',
+    'MARM_PIWIK_CONFIG_tracking_request'             => 'Bitte wÃ¤hlen Sie ein Requestmethode',
+    'MARM_PIWIK_CONFIG_tracking_method'             => 'Bitte wÃ¤hlen Sie ein Trackingmethode (Pro-Version)',
+    'MARM_PIWIK_CONFIG_tracking_method_php'         => 'Serverseitig Ã¼ber PHP (Pro-Version)',
+    'MARM_PIWIK_CONFIG_tracking_method_javascript'     => 'klassisch Ã¼ber JavaScript',
+    'MARM_PIWIK_CONFIG_piwik_heartbeat'             => 'Heartbeatinterval (kleiner 15s = aus)',
+    'MARM_PIWIK_CONFIG_newsletter_var_name'         => 'Variable, die Matomo fÃ¼r Newsletter trackt',
+    'MARM_PIWIK_CONFIG_newsletter_var_subscribed'     => 'Wert der Variablen, wenn sich ein Kunde anmeldet',
+    'MARM_PIWIK_CONFIG_newsletter_var_activated'     => 'Wert der Variablen, wenn ein Abbonent die Bestellung bestÃ¤tigt',
     'MARM_PIWIK_CONFIG_newsletter_var_unsubscribed' => 'Wert der Variablen beim Abmelden',
-    'MARM_PIWIK_CONFIG_newsletter_var_form_showed' 	=> 'Wert, wenn ein Kunde die Seite zum Tracken von Newslettern aufruft',
-    'MARM_PIWIK_CONFIG_searched_for_var_name' 		=> 'Variable, die Piwik trackt für Suchanfragen',
-    'MARM_PIWIK_CONFIG_no_search_results_var_name' 	=> 'Text "Kein Ergebnis für..." in Piwik',
-    'MARM_PIWIK_CONFIG_' 							=> '',
+    'MARM_PIWIK_CONFIG_newsletter_var_form_showed'     => 'Wert, wenn ein Kunde die Seite zum Tracken von Newslettern aufruft',
+    'MARM_PIWIK_CONFIG_searched_for_var_name'         => 'Variable, die Matomo trackt fÃ¼r Suchanfragen',
+    'MARM_PIWIK_CONFIG_no_search_results_var_name'     => 'Text "Kein Ergebnis fÃ¼r..." in Matomo',
+    'MARM_PIWIK_CONFIG_'                             => '',
 );
