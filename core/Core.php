@@ -376,7 +376,7 @@ class Core
          * may NOT have getBasket method (for example Details)
          * @var oxBasket $oBasket
          */
-        $oBasket = \OxidEsales\Eshop\Core\Session::instance()->getBasket();
+        $oBasket = \OxidEsales\Eshop\Core\Registry::getSession()->getBasket();
         $this->_setEcommerceItemsByBasket($oBasket);
         $this->addPushParams('trackEcommerceCartUpdate', $oBasket->getPrice()->getBruttoPrice());
     }
