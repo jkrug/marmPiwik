@@ -3,7 +3,7 @@
     <OXMENU id="NAVIGATION_ESHOPADMIN">
         <MAINMENU id="mxmainmenu">
             <SUBMENU id="mxcoresett" cl="shop" list="shop_list">
-                <TAB id="tbclmarm_piwik_setup" cl="marm_piwik_setup" />
+                <TAB id="tbclmarm_piwik_setup" cl="MarmPiwikConfig" />
             </SUBMENU>
         </MAINMENU>
     </OXMENU>
