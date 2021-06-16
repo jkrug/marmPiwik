@@ -6,13 +6,7 @@ Integrates the Piwik tracking code into OXID eShop
 
 - backup shop and database
 
-- copy the files from the repository to your shop in the directory
-  `modules/marm/piwik/`
-
-- add in composer.json autoload -> psr4 section
-  `"Marm\\Piwik\\": "./source/modules/marm/piwik"`
-
-- in console: `composer dump-autoload -o`
+- install via composer
 
 - Enable module under Extension > Module > marmalade.de Piwik
 
@@ -36,3 +30,6 @@ If you don't see Master Settings > Core Settings > Piwik setup tab, logout and l
    - Option for scriptfilename
    - Option for heartbeattimer
    - Option for requestmethod
+
+6. Oxid v6.3 compatile by BPMusic on 2021-06-16
+   - make use of requiredCookieConsense

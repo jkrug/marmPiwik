@@ -8,13 +8,7 @@ Integriert den Piwik-Trackingcode in OXID eShop
 
 - Backup von Shop und Datenbank erstellen
 
-- Dateien/Ordner des Repositories im Shop in das folgende Verzeichnis kopieren
-  `modules/marm/piwik/`
-
-- in composer.json autoload -> psr4 section hinzufügen
-  `"Marm\\Piwik\\": "./source/modules/marm/piwik"`
-
-- in der console: `composer dump-autoload -o`
+- installation via composer
 
 - aktivieren Sie das Modul im Backend
 
@@ -38,3 +32,6 @@ Wenn 'Stammdaten > Grundeinstellungen > Piwik' nicht sichtbar ist, aus Admin-Ber
    - Optionen für Scriptdateiname
    - Optionen für Heartbeattimer
    - Optionen für Request Methode
+
+6. Oxid v6.3 kompatibel by BPMusic on 2021-06-16
+   - beachtet requiredCookieConsense
