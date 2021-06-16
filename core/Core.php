@@ -482,6 +482,9 @@ class Core
         $sMarmPiwikCode = '<script type="text/javascript">';
         $sMarmPiwikCode .= 'var _paq = _paq || []; (function(){
             var u="//' . $this->getPiwikUrl(false) . '/";';
+        $sMarmPiwikCode .= 'if (COOKIESETTING.matomo * 1 !== 1) {
+            _paq.push(["requireCookieConsent"]);
+        }';
 
         $this->addPushParams(
             'setSiteId',

@@ -44,7 +44,7 @@ class Output extends \OxidEsales\Eshop\Core\Output
         if (!isAdmin() && !$blAdminUser) {
             $oMarmPiwik = oxNew(\Marm\Piwik\Core\Core::class);
             $sPiwikCode = $oMarmPiwik->getMarmPiwikCode();
-            $sOutput = str_ireplace("</head>", "{$sPiwikCode}\n</head>", ltrim($sOutput));
+            $sOutput = str_ireplace("</body>", "{$sPiwikCode}\n</body>", ltrim($sOutput));
         }
         return $sOutput;
     }
