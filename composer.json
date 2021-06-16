@@ -1,0 +1,28 @@
+{
+    "name": "bpm/piwik",
+    "description": "marmalade :: Piwik BPMusic extended",
+    "type": "oxideshop-module",
+    "keywords": ["oxid", "modules", "eShop"],
+    "homepage": "https://www.bpmusic.de",
+    "license": [
+        "GPL-3.0-only",
+        "proprietary"
+    ],
+    "version": "1.0.0",
+    "extra": {
+        "oxideshop": {
+            "blacklist-filter": [
+                "documentation/**/*.*"
+            ],
+            "target-directory": "marm/piwik"
+        }
+    },
+    "require": {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marm\\Piwik\\": "../../../source/modules/marm/piwik"
+        }
+    }
+}

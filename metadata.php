@@ -30,10 +30,6 @@ $aModule = array(
                 \OxidEsales\Eshop\Core\Output::class => \Marm\Piwik\Core\Output::class,
         ),
 
-        'files' => array(
-                'MarmPiwikCore'   => \Marm\Piwik\Core\Core::class,
-        ),
-
         'templates' => array(
                 'marm_piwik_setup.tpl'        => 'marm/piwik/views/admin/tpl/marm_piwik_setup.tpl'
         )
