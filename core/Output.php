@@ -28,7 +28,7 @@
 
 namespace Marm\Piwik\Core;
 
-class Output extends \OxidEsales\Eshop\Core\Output
+class Output extends Output_parent
 {
     /**
      * appends PIWIK javascript source before body tag

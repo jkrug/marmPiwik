@@ -13,7 +13,7 @@ $aModule = array(
         'title'                => 'marmalade :: Piwik',
         'thumbnail'        => 'marmalade.jpg',
         'url'                => 'http://www.marmalade.de',
-        'version'        => '0.7.2',
+        'version'        => '0.7.3',
         'author'        => 'marmalade GmbH',
         'email'                => 'support@marmalade.de',
 
